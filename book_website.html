@@ -32,7 +32,41 @@
                 linear-gradient(90deg, rgba(220, 38, 38, 0.03) 1px, transparent 1px);
             background-size: 50px 50px;
             pointer-events: none;
-            z-index: -4; /* Fixed: was 1 */
+            z-index: -4;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            border-radius: 12px;
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .lang-btn {
+            padding: 8px 12px;
+            background: transparent;
+            color: #fbbf24;
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn:hover,
+        .lang-btn.active {
+            background: rgba(251, 191, 36, 0.2);
+            border-color: #fbbf24;
+            color: #ffffff;
         }
 
         /* Animated neural network background */
@@ -265,13 +299,13 @@
 
         /* Leadership Metrics */
         .metrics-bar {
-    position: static;
-    display: flex;
-    gap: 3rem;
-    animation: fadeIn 2s ease-out 2s both;
-    margin-top: 2.5rem; /* Add this for spacing */
-    justify-content: center; /* Center horizontally */
-}
+            position: static;
+            display: flex;
+            gap: 3rem;
+            animation: fadeIn 2s ease-out 2s both;
+            margin-top: 2.5rem;
+            justify-content: center;
+        }
 
         .metric {
             text-align: center;
@@ -601,6 +635,18 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            .language-switcher {
+                top: 10px;
+                right: 10px;
+                padding: 8px;
+                gap: 8px;
+            }
+            
+            .lang-btn {
+                padding: 6px 10px;
+                font-size: 0.8rem;
+            }
+            
             .metrics-bar {
                 flex-direction: column;
                 gap: 1rem;
@@ -629,6 +675,14 @@
     </style>
 </head>
 <body>
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ta">தமிழ்</button>
+        <button class="lang-btn" data-lang="hi">हिं</button>
+        <button class="lang-btn" data-lang="te">తె</button>
+    </div>
+
     <!-- Neural network background -->
     <div class="neural-bg">
         <div class="orb orb-1"></div>
@@ -639,75 +693,75 @@
     <!-- Hero - Leadership Command Center -->
     <section class="hero">
         <div class="hero-content">
-            <div class="leadership-badge">⚡ Political Revolution ⚡</div>
-            <h1 class="book-title">THALAPATHY ALLA THALAIVAN</h1>
-            <div class="power-subtitle">The Blueprint for Transformational Leadership</div>
-            <div class="manifesto">
+            <div class="leadership-badge" data-translate="badge">⚡ Political Revolution ⚡</div>
+            <h1 class="book-title" data-translate="title">THALAPATHY ALLA THALAIVAN</h1>
+            <div class="power-subtitle" data-translate="subtitle">The Blueprint for Transformational Leadership</div>
+            <div class="manifesto" data-translate="manifesto">
                 When the masses seek a hero, true leaders emerge not from fame, but from unwavering dedication to justice, progress, and the people's voice. This is more than a book—it's a manifesto for change.
             </div>
             <div class="cta-container">
-                <a href="#revolution" class="btn-futuristic btn-primary-future">Join The Revolution</a>
-                <a href="#vision" class="btn-futuristic btn-secondary-future">Discover The Vision</a>
+                <a href="#revolution" class="btn-futuristic btn-primary-future" data-translate="cta1">Join The Revolution</a>
+                <a href="#vision" class="btn-futuristic btn-secondary-future" data-translate="cta2">Discover The Vision</a>
             </div>
             <div class="metrics-bar">
-            <div class="metric">
-                <span class="metric-number">2025</span>
-                <span class="metric-label">Future Ready</span>
+                <div class="metric">
+                    <span class="metric-number">2025</span>
+                    <span class="metric-label" data-translate="metric1">Future Ready</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-number">∞</span>
+                    <span class="metric-label" data-translate="metric2">Impact Potential</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-number">1</span>
+                    <span class="metric-label" data-translate="metric3">True Leader</span>
+                </div>
             </div>
-            <div class="metric">
-                <span class="metric-number">∞</span>
-                <span class="metric-label">Impact Potential</span>
-            </div>
-            <div class="metric">
-                <span class="metric-number">1</span>
-                <span class="metric-label">True Leader</span>
-            </div>
-        </div>
         </div>      
     </section>
 
     <!-- Vision Section -->
     <section class="vision-section" id="vision">
         <div class="section-header reveal">
-            <div class="section-badge">🎯 Leadership Principles 🎯</div>
-            <h2 class="section-title">The Leadership Manifesto</h2>
+            <div class="section-badge" data-translate="vision_badge">🎯 Leadership Principles 🎯</div>
+            <h2 class="section-title" data-translate="vision_title">The Leadership Manifesto</h2>
         </div>
         
         <div class="vision-grid">
             <div class="vision-card reveal">
                 <div class="vision-icon">🛡️</div>
-                <h3 class="vision-title">Unwavering Justice</h3>
-                <p class="vision-desc">True leaders stand as shields for the oppressed, wielding power not for personal gain but as instruments of justice and equality for all.</p>
+                <h3 class="vision-title" data-translate="principle1_title">Unwavering Justice</h3>
+                <p class="vision-desc" data-translate="principle1_desc">True leaders stand as shields for the oppressed, wielding power not for personal gain but as instruments of justice and equality for all.</p>
             </div>
             
             <div class="vision-card reveal">
                 <div class="vision-icon">⚔️</div>
-                <h3 class="vision-title">Fearless Action</h3>
-                <p class="vision-desc">When the moment demands courage, authentic leaders step forward, making the difficult decisions that others shy away from.</p>
+                <h3 class="vision-title" data-translate="principle2_title">Fearless Action</h3>
+                <p class="vision-desc" data-translate="principle2_desc">When the moment demands courage, authentic leaders step forward, making the difficult decisions that others shy away from.</p>
             </div>
             
             <div class="vision-card reveal">
                 <div class="vision-icon">🌟</div>
-                <h3 class="vision-title">Visionary Guidance</h3>
-                <p class="vision-desc">Beyond the horizon of today's challenges lies tomorrow's possibilities. Leaders illuminate the path toward a brighter future.</p>
+                <h3 class="vision-title" data-translate="principle3_title">Visionary Guidance</h3>
+                <p class="vision-desc" data-translate="principle3_desc">Beyond the horizon of today's challenges lies tomorrow's possibilities. Leaders illuminate the path toward a brighter future.</p>
             </div>
             
             <div class="vision-card reveal">
                 <div class="vision-icon">🤝</div>
-                <h3 class="vision-title">People's Champion</h3>
-                <p class="vision-desc">Real leadership emerges from deep connection with the people, understanding their struggles, and fighting for their dreams.</p>
+                <h3 class="vision-title" data-translate="principle4_title">People's Champion</h3>
+                <p class="vision-desc" data-translate="principle4_desc">Real leadership emerges from deep connection with the people, understanding their struggles, and fighting for their dreams.</p>
             </div>
             
             <div class="vision-card reveal">
                 <div class="vision-icon">🔥</div>
-                <h3 class="vision-title">Transformational Power</h3>
-                <p class="vision-desc">Through decisive action and unwavering principles, true leaders become catalysts for societal transformation and progress.</p>
+                <h3 class="vision-title" data-translate="principle5_title">Transformational Power</h3>
+                <p class="vision-desc" data-translate="principle5_desc">Through decisive action and unwavering principles, true leaders become catalysts for societal transformation and progress.</p>
             </div>
             
             <div class="vision-card reveal">
                 <div class="vision-icon">💎</div>
-                <h3 class="vision-title">Integrity Foundation</h3>
-                <p class="vision-desc">In a world of compromise, authentic leaders build their legacy on the unshakeable foundation of moral integrity and ethical action.</p>
+                <h3 class="vision-title" data-translate="principle6_title">Integrity Foundation</h3>
+                <p class="vision-desc" data-translate="principle6_desc">In a world of compromise, authentic leaders build their legacy on the unshakeable foundation of moral integrity and ethical action.</p>
             </div>
         </div>
     </section>
@@ -716,19 +770,19 @@
     <section class="mentor-section">
         <div class="mentor-container">
             <div class="section-header reveal">
-                <div class="section-badge">✨ Visionary Author ✨</div>
-                <h2 class="section-title">The Mind Behind The Movement</h2>
+                <div class="section-badge" data-translate="author_badge">✨ Visionary Author ✨</div>
+                <h2 class="section-title" data-translate="author_title">The Mind Behind The Movement</h2>
             </div>
             
             <div class="mentor-avatar reveal">D</div>
             <h3 class="mentor-name reveal">DINESH</h3>
-            <div class="mentor-title reveal">Political Strategist & Leadership Architect</div>
+            <div class="mentor-title reveal" data-translate="author_role">Political Strategist & Leadership Architect</div>
             <div class="mentor-bio reveal">
-                <p>Dinesh stands as a visionary chronicler of political transformation and authentic leadership. With an acute understanding of the intersection between entertainment, politics, and social change, he crafts narratives that inspire action and awaken consciousness.</p>
+                <p data-translate="author_bio1">Dinesh stands as a visionary chronicler of political transformation and authentic leadership. With an acute understanding of the intersection between entertainment, politics, and social change, he crafts narratives that inspire action and awaken consciousness.</p>
                 <br>
-                <p>His work transcends traditional political commentary, diving deep into the psychology of leadership and the mechanics of social transformation. Through "Thalapathy Alla Thalaivan," Dinesh challenges readers to distinguish between mere celebrity and true leadership.</p>
+                <p data-translate="author_bio2">His work transcends traditional political commentary, diving deep into the psychology of leadership and the mechanics of social transformation. Through "Thalapathy Alla Thalaivan," Dinesh challenges readers to distinguish between mere celebrity and true leadership.</p>
                 <br>
-                <p>As a mentor to emerging leaders and a sharp analyst of contemporary politics, Dinesh brings both intellectual rigor and passionate conviction to his exploration of what it truly means to serve the people in the modern age.</p>
+                <p data-translate="author_bio3">As a mentor to emerging leaders and a sharp analyst of contemporary politics, Dinesh brings both intellectual rigor and passionate conviction to his exploration of what it truly means to serve the people in the modern age.</p>
             </div>
         </div>
     </section>
@@ -736,30 +790,30 @@
     <!-- Revolution Section - Purchase -->
     <section class="revolution-section" id="revolution">
         <div class="section-header reveal">
-            <div class="section-badge">🚀 Join The Revolution 🚀</div>
-            <h2 class="section-title">Command Your Copy</h2>
+            <div class="section-badge" data-translate="purchase_badge">🚀 Join The Revolution 🚀</div>
+            <h2 class="section-title" data-translate="purchase_title">Command Your Copy</h2>
         </div>
         
         <div class="revolution-grid">
             <div class="platform-card reveal">
                 <div class="platform-icon">📚</div>
-                <h3 class="platform-name">Amazon Fortress</h3>
-                <p class="platform-desc">Secure your hardcover edition from the global command center of books</p>
-                <a href="#" class="btn-futuristic btn-primary-future">Acquire on Amazon</a>
+                <h3 class="platform-name" data-translate="platform1_name">Amazon Fortress</h3>
+                <p class="platform-desc" data-translate="platform1_desc">Secure your hardcover edition from the global command center of books</p>
+                <a href="#" class="btn-futuristic btn-primary-future" data-translate="platform1_btn">Acquire on Amazon</a>
             </div>
             
             <div class="platform-card reveal">
                 <div class="platform-icon">⚡</div>
-                <h3 class="platform-name">Kindle Arsenal</h3>
-                <p class="platform-desc">Instant digital deployment to your personal leadership library</p>
-                <a href="#" class="btn-futuristic btn-primary-future">Deploy on Kindle</a>
+                <h3 class="platform-name" data-translate="platform2_name">Kindle Arsenal</h3>
+                <p class="platform-desc" data-translate="platform2_desc">Instant digital deployment to your personal leadership library</p>
+                <a href="#" class="btn-futuristic btn-primary-future" data-translate="platform2_btn">Deploy on Kindle</a>
             </div>
             
             <div class="platform-card reveal">
                 <div class="platform-icon">🎯</div>
-                <h3 class="platform-name">Flipkart Station</h3>
-                <p class="platform-desc">Strategic delivery across the Indian subcontinent</p>
-                <a href="#" class="btn-futuristic btn-primary-future">Launch on Flipkart</a>
+                <h3 class="platform-name" data-translate="platform3_name">Flipkart Station</h3>
+                <p class="platform-desc" data-translate="platform3_desc">Strategic delivery across the Indian subcontinent</p>
+                <a href="#" class="btn-futuristic btn-primary-future" data-translate="platform3_btn">Launch on Flipkart</a>
             </div>
         </div>
     </section>
@@ -768,31 +822,307 @@
     <footer class="command-footer">
         <div class="footer-grid">
             <div class="footer-section reveal">
-                <h4>Mission Control</h4>
-                <p>This book represents an independent analysis of leadership and political transformation. It stands as a beacon for those who seek to understand the difference between popularity and authentic service to humanity.</p>
+                <h4 data-translate="footer1_title">Mission Control</h4>
+                <p data-translate="footer1_desc">This book represents an independent analysis of leadership and political transformation. It stands as a beacon for those who seek to understand the difference between popularity and authentic service to humanity.</p>
             </div>
             
             <div class="footer-section reveal">
-                <h4>Strategic Communication</h4>
+                <h4 data-translate="footer2_title">Strategic Communication</h4>
                 <p>📧 dinesh.leadership@email.com</p>
                 <p>📱 +91-XXXXXXXXXX</p>
-                <p>🌐 Connect for leadership consultations</p>
+                <p data-translate="footer2_desc">🌐 Connect for leadership consultations</p>
             </div>
             
             <div class="footer-section reveal">
-                <h4>Legal Framework</h4>
-                <p>© 2025 Dinesh - Leadership Architect</p>
-                <p>All intellectual property rights reserved</p>
-                <p>Independent political analysis & commentary</p>
+                <h4 data-translate="footer3_title">Legal Framework</h4>
+                <p data-translate="footer3_copyright">© 2025 Dinesh - Leadership Architect</p>
+                <p data-translate="footer3_rights">All intellectual property rights reserved</p>
+                <p data-translate="footer3_analysis">Independent political analysis & commentary</p>
             </div>
         </div>
         
         <div class="copyright reveal">
-            <p>⚡ POWERED BY AUTHENTIC LEADERSHIP PRINCIPLES ⚡</p>
+            <p data-translate="footer_powered">⚡ POWERED BY AUTHENTIC LEADERSHIP PRINCIPLES ⚡</p>
         </div>
     </footer>
 
     <script>
+        // Language translations
+        const translations = {
+            en: {
+                badge: "⚡ Political Revolution ⚡",
+                title: "THALAPATHY ALLA THALAIVAN",
+                subtitle: "The Blueprint for Transformational Leadership",
+                manifesto: "When the masses seek a hero, true leaders emerge not from fame, but from unwavering dedication to justice, progress, and the people's voice. This is more than a book—it's a manifesto for change.",
+                cta1: "Join The Revolution",
+                cta2: "Discover The Vision",
+                metric1: "Future Ready",
+                metric2: "Impact Potential",
+                metric3: "True Leader",
+                vision_badge: "🎯 Leadership Principles 🎯",
+                vision_title: "The Leadership Manifesto",
+                principle1_title: "Unwavering Justice",
+                principle1_desc: "True leaders stand as shields for the oppressed, wielding power not for personal gain but as instruments of justice and equality for all.",
+                principle2_title: "Fearless Action",
+                principle2_desc: "When the moment demands courage, authentic leaders step forward, making the difficult decisions that others shy away from.",
+                principle3_title: "Visionary Guidance",
+                principle3_desc: "Beyond the horizon of today's challenges lies tomorrow's possibilities. Leaders illuminate the path toward a brighter future.",
+                principle4_title: "People's Champion",
+                principle4_desc: "Real leadership emerges from deep connection with the people, understanding their struggles, and fighting for their dreams.",
+                principle5_title: "Transformational Power",
+                principle5_desc: "Through decisive action and unwavering principles, true leaders become catalysts for societal transformation and progress.",
+                principle6_title: "Integrity Foundation",
+                principle6_desc: "In a world of compromise, authentic leaders build their legacy on the unshakeable foundation of moral integrity and ethical action.",
+                author_badge: "✨ Visionary Author ✨",
+                author_title: "The Mind Behind The Movement",
+                author_role: "Political Strategist & Leadership Architect",
+                author_bio1: "Dinesh stands as a visionary chronicler of political transformation and authentic leadership. With an acute understanding of the intersection between entertainment, politics, and social change, he crafts narratives that inspire action and awaken consciousness.",
+                author_bio2: "His work transcends traditional political commentary, diving deep into the psychology of leadership and the mechanics of social transformation. Through \"Thalapathy Alla Thalaivan,\" Dinesh challenges readers to distinguish between mere celebrity and true leadership.",
+                author_bio3: "As a mentor to emerging leaders and a sharp analyst of contemporary politics, Dinesh brings both intellectual rigor and passionate conviction to his exploration of what it truly means to serve the people in the modern age.",
+                purchase_badge: "🚀 Join The Revolution 🚀",
+                purchase_title: "Command Your Copy",
+                platform1_name: "Amazon Fortress",
+                platform1_desc: "Secure your hardcover edition from the global command center of books",
+                platform1_btn: "Acquire on Amazon",
+                platform2_name: "Kindle Arsenal",
+                platform2_desc: "Instant digital deployment to your personal leadership library",
+                platform2_btn: "Deploy on Kindle",
+                platform3_name: "Flipkart Station",
+                platform3_desc: "Strategic delivery across the Indian subcontinent",
+                platform3_btn: "Launch on Flipkart",
+                footer1_title: "Mission Control",
+                footer1_desc: "This book represents an independent analysis of leadership and political transformation. It stands as a beacon for those who seek to understand the difference between popularity and authentic service to humanity.",
+                footer2_title: "Strategic Communication",
+                footer2_desc: "🌐 Connect for leadership consultations",
+                footer3_title: "Legal Framework",
+                footer3_copyright: "© 2025 Dinesh - Leadership Architect",
+                footer3_rights: "All intellectual property rights reserved",
+                footer3_analysis: "Independent political analysis & commentary",
+                footer_powered: "⚡ POWERED BY AUTHENTIC LEADERSHIP PRINCIPLES ⚡"
+            },
+            ta: {
+                badge: "⚡ அரசியல் புரட்சி ⚡",
+                title: "தளபதி அல்ல தலைவன்",
+                subtitle: "மாற்றத்தின் தலைமைத்துவத்திற்கான வரைபடம்",
+                manifesto: "மக்கள் ஒரு வீரனை தேடும் போது, உண்மையான தலைவர்கள் புகழிலிருந்து அல்ல, மாறாக நீதி, முன்னேற்றம் மற்றும் மக்களின் குரலுக்கான அசைக்க முடியாத அர்ப்பணிப்பிலிருந்து வெளிப்படுகிறார்கள். இது ஒரு புத்தகத்தை விட அதிகம்—இது மாற்றத்திற்கான அறிக்கை.",
+                cta1: "புரட்சியில் சேருங்கள்",
+                cta2: "தரிசனத்தை கண்டறியுங்கள்",
+                metric1: "எதிர்காலம் தயார்",
+                metric2: "தாக்க சாத்தியம்",
+                metric3: "உண்மையான தலைவர்",
+                vision_badge: "🎯 தலைமைத்துவ கொள்கைகள் 🎯",
+                vision_title: "தலைமைத்துவ அறிக்கை",
+                principle1_title: "அசைக்க முடியாத நீதி",
+                principle1_desc: "உண்மையான தலைவர்கள் ஒடுக்கப்பட்டவர்களுக்கு கேடயங்களாக நிற்கிறார்கள், தனிப்பட்ட ஆதாயத்திற்காக அல்ல, ஆனால் அனைவருக்கும் நீதி மற்றும் சமத்துவத்தின் கருவிகளாக அதிகாரத்தை பயன்படுத்துகிறார்கள்.",
+                principle2_title: "அச்சமற்ற செயல்",
+                principle2_desc: "தருணம் தைரியத்தை கோரும் போது, உண்மையான தலைவர்கள் முன்னே வருகிறார்கள், மற்றவர்கள் தவிர்க்கும் கடினமான முடிவுகளை எடுக்கிறார்கள்.",
+                principle3_title: "தூரநோக்கு வழிகாட்டுதல்",
+                principle3_desc: "இன்றைய சவால்களின் அடிவானத்தை கடந்து நாளைய சாத்தியங்கள் உள்ளன. தலைவர்கள் பிரகாசமான எதிர்காலத்திற்கான பாதையை ஒளிரச் செய்கிறார்கள்.",
+                principle4_title: "மக்களின் வீரன்",
+                principle4_desc: "உண்மையான தலைமைத்துவம் மக்களுடன் ஆழமான தொடர்பிலிருந்து வெளிப்படுகிறது, அவர்களின் போராட்டங்களைப் புரிந்துகொண்டு, அவர்களின் கனவுகளுக்காக போராடுகிறது.",
+                principle5_title: "மாற்றம் அளிக்கும் சக்தி",
+                principle5_desc: "தீர்க்கமான நடவடிக்கை மற்றும் அசைக்க முடியாத கொள்கைகள் மூலம், உண்மையான தலைவர்கள் சமூக மாற்றம் மற்றும் முன்னேற்றத்திற்கான வினையூக்கிகளாக மாறுகிறார்கள்.",
+                principle6_title: "நேர்மை அடித்தளம்",
+                principle6_desc: "சமரசத்தின் உலகில், உண்மையான தலைவர்கள் தங்கள் பாரம்பரியத்தை தார்மீக நேர்மை மற்றும் நெறிமுறை நடவடிக்கையின் அசைக்க முடியாத அடித்தளத்தில் கட்டமைக்கிறார்கள்.",
+                author_badge: "✨ தூரநோக்கு எழுத்தாளர் ✨",
+                author_title: "இயக்கத்தின் பின்னால் உள்ள மனம்",
+                author_role: "அரசியல் உத்தியாளர் & தலைமைத்துவ கட்டடக்கலைஞர்",
+                author_bio1: "தினேஷ் அரசியல் மாற்றம் மற்றும் உண்மையான தலைமைத்துவத்தின் தூரநோக்கு வரலாற்றாசிரியராக நிற்கிறார். பொழுதுபோக்கு, அரசியல் மற்றும் சமூக மாற்றம் ஆகியவற்றுக்கு இடையேயான தொடர்புகளைப் பற்றிய கூர்மையான புரிதலுடன், அவர் நடவடிக்கையை ஊக்குவிக்கும் மற்றும் நனவை எழுப்பும் கதைகளை உருவாக்குகிறார்.",
+                author_bio2: "அவரது வேலை பாரம்பரிய அரசியல் வர்ணனையை மீறுகிறது, தலைமைத்துவத்தின் உளவியல் மற்றும் சமூக மாற்றத்தின் இயக்கவியல் ஆழமாக கவனம் செலுத்துகிறது. \"தளபதி அல்ல தலைவன்\" மூலம், வெறும் பிரபலம் மற்றும் உண்மையான தலைமைத்துவத்தை வேறுபடுத்திப் பார்க்க தினேஷ் வாசகர்களை சவால் விடுகிறார்.",
+                author_bio3: "வளர்ந்து வரும் தலைவர்களுக்கு ஆலோசகராகவும், சமகால அரசியலின் கூர்மையான பகுப்பாளராகவும், நவீன காலத்தில் மக்களுக்கு சேவை செய்வது என்றால் என்ன என்பதைப் பற்றிய தனது ஆய்வுக்கு அறிவார்ந்த கடுமை மற்றும் உணர்ச்சிவசப்பட்ட நம்பிக்கை இரண்டையும் தினேஷ் கொண்டு வருகிறார்.",
+                purchase_badge: "🚀 புரட்சியில் சேருங்கள் 🚀",
+                purchase_title: "உங்கள் நகலை கட்டுப்படுத்துங்கள்",
+                platform1_name: "அமேசான் கோட்டை",
+                platform1_desc: "புத்தகங்களின் உலகளாவிய கட்டளை மையத்திலிருந்து உங்கள் கடின அட்டைப் பதிப்பைப் பாதுகாக்கவும்",
+                platform1_btn: "அமேசானில் வாங்குங்கள்",
+                platform2_name: "கிண்டில் ஆயுதக் கிடங்கு",
+                platform2_desc: "உங்கள் தனிப்பட்ட தலைமைத்துவ நூலகத்திற்கு உடனடி டிஜிட்டல் வரிசைப்படுத்துதல்",
+                platform2_btn: "கிண்டிலில் வரிசைப்படுத்துங்கள்",
+                platform3_name: "ப்ளிப்கார்ட் நிலையம்",
+                platform3_desc: "இந்திய துணைக் கண்டம் முழுவதும் மூலோபாய வழங்கல்",
+                platform3_btn: "ப்ளிப்கார்ட்டில் தொடங்குங்கள்",
+                footer1_title: "பணி கட்டுப்பாடு",
+                footer1_desc: "இந்த புத்தகம் தலைமைத்துவம் மற்றும் அரசியல் மாற்றத்தின் சுயாதீன பகுப்பாய்வை பிரதிபலிக்கிறது. இது புகழ்பெற்ற தன்மைக்கும் மனிதகுலத்திற்கான உண்மையான சேவைக்கும் இடையிலான வித்தியாசத்தைப் புரிந்துகொள்ள விரும்புவோருக்கான வழிகாட்டியாக நிற்கிறது.",
+                footer2_title: "மூலோபாய தொடர்பு",
+                footer2_desc: "🌐 தலைமைத்துவ ஆலோசனைகளுக்கு தொடர்பு கொள்ளுங்கள்",
+                footer3_title: "சட்ட கட்டமைப்பு",
+                footer3_copyright: "© 2025 தினேஷ் - தலைமைத்துவ கட்டடக்கலைஞர்",
+                footer3_rights: "அனைத்து அறிவுசார் சொத்துரிமைகளும் ஒதுக்கப்பட்டுள்ளன",
+                footer3_analysis: "சுயாதீன அரசியல் பகுப்பாய்வு & வர்ணனை",
+                footer_powered: "⚡ உண்மையான தலைமைத்துவ கொள்கைகளால் இயக்கப்படுகிறது ⚡"
+            },
+            hi: {
+                badge: "⚡ राजनीतिक क्रांति ⚡",
+                title: "थलपति अल्ला थलेवन",
+                subtitle: "परिवर्तनकारी नेतृत्व का खाका",
+                manifesto: "जब जनता एक नायक की तलाश करती है, तो सच्चे नेता प्रसिद्धि से नहीं, बल्कि न्याय, प्रगति और लोगों की आवाज के प्रति अटूट समर्पण से उभरते हैं। यह सिर्फ एक किताब नहीं है—यह बदलाव का घोषणापत्र है।",
+                cta1: "क्रांति में शामिल हों",
+                cta2: "दृष्टिकोण खोजें",
+                metric1: "भविष्य तैयार",
+                metric2: "प्रभाव क्षमता",
+                metric3: "सच्चा नेता",
+                vision_badge: "🎯 नेतृत्व सिद्धांत 🎯",
+                vision_title: "नेतृत्व घोषणापत्र",
+                principle1_title: "अडिग न्याय",
+                principle1_desc: "सच्चे नेता दबे-कुचले लोगों के लिए ढाल बनकर खड़े होते हैं, व्यक्तिगत लाभ के लिए नहीं बल्कि सभी के लिए न्याय और समानता के उपकरण के रूप में शक्ति का उपयोग करते हैं।",
+                principle2_title: "निर्भीक कार्रवाई",
+                principle2_desc: "जब पल साहस की मांग करता है, तो प्रामाणिक नेता आगे आते हैं, उन कठिन निर्णयों को लेते हैं जिनसे दूसरे बचते हैं।",
+                principle3_title: "दूरदर्शी मार्गदर्शन",
+                principle3_desc: "आज की चुनौतियों के क्षितिज से परे कल की संभावनाएं हैं। नेता एक उज्ज्वल भविष्य के लिए मार्ग को रोशन करते हैं।",
+                principle4_title: "जनता के चैंपियन",
+                principle4_desc: "वास्तविक नेतृत्व लोगों के साथ गहरे जुड़ाव से उभरता है, उनके संघर्षों को समझता है, और उनके सपनों के लिए लड़ता है।",
+                principle5_title: "परिवर्तनकारी शक्ति",
+                principle5_desc: "निर्णायक कार्रवाई और अटूट सिद्धांतों के माध्यम से, सच्चे नेता सामाजिक परिवर्तन और प्रगति के उत्प्रेरक बन जाते हैं।",
+                principle6_title: "अखंडता की नींव",
+                principle6_desc: "समझौते की दुनिया में, प्रामाणिक नेता अपनी विरासत को नैतिक अखंडता और नैतिक कार्रवाई की अटल नींव पर बनाते हैं।",
+                author_badge: "✨ दूरदर्शी लेखक ✨",
+                author_title: "आंदोलन के पीछे का दिमाग",
+                author_role: "राजनीतिक रणनीतिकार और नेतृत्व वास्तुकार",
+                author_bio1: "दिनेश राजनीतिक परिवर्तन और प्रामाणिक नेतृत्व के दूरदर्शी इतिहासकार के रूप में खड़े हैं। मनोरंजन, राजनीति और सामाजिक परिवर्तन के बीच अंतर्संबंध की तीव्र समझ के साथ, वे ऐसी कथाएं तैयार करते हैं जो कार्रवाई को प्रेरित करती हैं और चेतना जगाती हैं।",
+                author_bio2: "उनका काम पारंपरिक राजनीतिक टिप्पणी से कहीं आगे जाता है, नेतृत्व के मनोविज्ञान और सामाजिक परिवर्तन के तंत्र में गहराई से उतरता है। \"थलपति अल्ला थलेवन\" के माध्यम से, दिनेश पाठकों को केवल सेलिब्रिटी और सच्चे नेतृत्व के बीच अंतर करने की चुनौती देते हैं।",
+                author_bio3: "उभरते नेताओं के लिए एक गुरु और समकालीन राजनीति के एक तीक्ष्ण विश्लेषक के रूप में, दिनेश आधुनिक युग में लोगों की सेवा करने का वास्तव में क्या मतलब है, इसकी खोज में बौद्धिक कठोरता और भावुक दृढ़ विश्वास दोनों लाते हैं।",
+                purchase_badge: "🚀 क्रांति में शामिल हों 🚀",
+                purchase_title: "अपनी कॉपी का आदेश दें",
+                platform1_name: "अमेज़न किला",
+                platform1_desc: "पुस्तकों के वैश्विक कमांड सेंटर से अपना हार्डकवर संस्करण सुरक्षित करें",
+                platform1_btn: "अमेज़न पर प्राप्त करें",
+                platform2_name: "किंडल शस्त्रागार",
+                platform2_desc: "आपकी व्यक्तिगत नेतृत्व लाइब्रेरी में तत्काल डिजिटल तैनाती",
+                platform2_btn: "किंडल पर तैनाती करें",
+                platform3_name: "फ्लिपकार्ट स्टेशन",
+                platform3_desc: "भारतीय उपमहाद्वीप में रणनीतिक वितरण",
+                platform3_btn: "फ्लिपकार्ट पर लॉन्च करें",
+                footer1_title: "मिशन नियंत्रण",
+                footer1_desc: "यह पुस्तक नेतृत्व और राजनीतिक परिवर्तन का एक स्वतंत्र विश्लेषण प्रस्तुत करती है। यह उन लोगों के लिए एक प्रकाशस्तंभ के रूप में खड़ी है जो लोकप्रियता और मानवता के लिए प्रामाणिक सेवा के बीच अंतर को समझना चाहते हैं।",
+                footer2_title: "रणनीतिक संचार",
+                footer2_desc: "🌐 नेतृत्व सलाह के लिए जुड़ें",
+                footer3_title: "कानूनी ढांचा",
+                footer3_copyright: "© 2025 दिनेश - नेतृत्व वास्तुकार",
+                footer3_rights: "सभी बौद्धिक संपदा अधिकार सुरक्षित",
+                footer3_analysis: "स्वतंत्र राजनीतिक विश्लेषण और टिप्पणी",
+                footer_powered: "⚡ प्रामाणिक नेतृत्व सिद्धांतों द्वारा संचालित ⚡"
+            },
+            te: {
+                badge: "⚡ రాజకీయ విప్లవం ⚡",
+                title: "తలపతి అల్లా తలైవన్",
+                subtitle: "పరివర్తనాత్మక నాయకత్వానికి బ్లూప్రింట్",
+                manifesto: "ప్రజలు ఒక వీరుడిని వెతుకుతున్నప్పుడు, నిజమైన నాయకులు కీర్తి నుండి కాదు, న్యాయం, పురోగతి మరియు ప్రజల స్వరం పట్ల అచంచలమైన అంకితభావం నుండి ఉద్భవిస్తారు. ఇది కేవలం ఒక పుస్తకం కంటే ఎక్కువ—ఇది మార్పు కోసం ప్రకటన.",
+                cta1: "విప్లవంలో చేరండి",
+                cta2: "దర్శనాన్ని కనుగొనండి",
+                metric1: "భవిష్యత్తు సిద్ధం",
+                metric2: "ప్రభావ సంభావ్యత",
+                metric3: "నిజమైన నాయకుడు",
+                vision_badge: "🎯 నాయకత్వ సూత్రాలు 🎯",
+                vision_title: "నాయకత్వ ప్రకటన",
+                principle1_title: "అచంచలమైన న్యాయం",
+                principle1_desc: "నిజమైన నాయకులు అణగారిన వారికి కవచాలుగా నిలుస్తారు, వ్యక్తిగత లాభం కోసం కాకుండా అందరికీ న్యాయం మరియు సమానత్వానికి సాధనాలుగా అధికారాన్ని వినియోగిస్తారు.",
+                principle2_title: "భయంలేని చర్య",
+                principle2_desc: "క్షణం ధైర్యాన్ని కోరినప్పుడు, ప్రామాణిక నాయకులు ముందుకు వస్తారు, ఇతరులు దూరం చేసే కష్టమైన నిర్ణయాలను తీసుకుంటారు.",
+                principle3_title: "దూరదృష్టి మార్గదర్శకత్వం",
+                principle3_desc: "నేటి సవాళ్ల హోరిజన్‌కు మించి రేపటి అవకాశాలు ఉన్నాయి. నాయకులు ఉజ్జ్వల భవిష్యత్తుకు మార్గాన్ని ప్రకాశవంతం చేస్తారు.",
+                principle4_title: "ప్రజల చాంపియన్",
+                principle4_desc: "నిజమైన నాయకత్వం ప్రజలతో లోతైన సంబంధం నుండి ఉద్భవిస్తుంది, వారి పోరాటాలను అర్థం చేసుకుని, వారి కలల కోసం పోరాడుతుంది.",
+                principle5_title: "పరివర్తనాత్మక శక్తి",
+                principle5_desc: "నిర్ణయాత్మక చర్య మరియు అచంచలమైన సూత్రాల ద్వారా, నిజమైన నాయకులు సామాజిక పరివర్తన మరియు పురోగతికి ఉత్ప్రేరకాలుగా మారతారు.",
+                principle6_title: "సమగ్రత పునాది",
+                principle6_desc: "రాజీల ప్రపంచంలో, ప్రామాణిక నాయకులు వారి వారసత్వాన్ని నైతిక సమగ్రత మరియు నైతిక చర్య యొక్క అచంచలమైన పునాదిపై నిర్మిస్తారు.",
+                author_badge: "✨ దూరదృష్టి రచయిత ✨",
+                author_title: "ఉద్యమం వెనుక ఉన్న మనస్సు",
+                author_role: "రాజకీయ వ్యూహకర్త & నాయకత్వ వాస్తుశిల్పి",
+                author_bio1: "దినేష్ రాజకీయ పరివర్తన మరియు ప్రామాణిక నాయకత్వం యొక్క దూరదృష్టి చరిత్రకారుడిగా నిలుస్తారు. వినోదం, రాజకీయాలు మరియు సామాజిక మార్పుల మధ్య అంతర్సంబంధం యొక్క తీవ్రమైన అవగాహనతో, వారు చర్యను ప్రేరేపించే మరియు చైతన్యాన్ని మేల్కొల్పే కథనాలను రూపొందిస్తారు.",
+                author_bio2: "అతని పని సాంప్రదాయ రాజకీయ వ్యాఖ్యానాన్ని అధిగమిస్తుంది, నాయకత్వ మనస్సాస్త్రం మరియు సామాజిక పరివర్తన యొక్క యాంత్రిక శాస్త్రంలో లోతుగా మునిగిపోతుంది. \"తలపతి అల్లా తలైవన్\" ద్వారా, దినేష్ పాఠకులను కేవలం ప్రముఖ వ్యక్తిత్వం మరియు నిజమైన నాయకత్వం మధ్య తేడాను గుర్తించే సవాలును విసురుతారు.",
+                author_bio3: "అభివృద్ధి చెందుతున్న నాయకులకు గురువుగా మరియు సమకాలీన రాజకీయాల తీక్షణ విశ్లేషకుడిగా, ఆధునిక యుగంలో ప్రజలకు సేవ చేయడం అంటే నిజంగా ఏమిటో తన అన్వేషణకు దినేష్ మేధోపరమైన కఠోరత మరియు భావోద్వేగ దృఢత్వం రెండింటినీ తీసుకువస్తారు.",
+                purchase_badge: "🚀 విప్లవంలో చేరండి 🚀",
+                purchase_title: "మీ కాపీని కమాండ్ చేయండి",
+                platform1_name: "అమెజాన్ కోట",
+                platform1_desc: "పుస్తకాల గ్లోబల్ కమాండ్ సెంటర్ నుండి మీ హార్డ్‌కవర్ ఎడిషన్‌ను భద్రపరచండి",
+                platform1_btn: "అమెజాన్‌లో సంపాదించండి",
+                platform2_name: "కిండిల్ ఆర్సెనల్",
+                platform2_desc: "మీ వ్యక్తిగత నాయకత్వ లైబ్రరీకి తక్షణ డిజిటల్ విస్తరణ",
+                platform2_btn: "కిండిల్‌లో అమలు చేయండి",
+                platform3_name: "ఫ్లిప్‌కార్ట్ స్టేషన్",
+                platform3_desc: "భారత ఉపఖండం అంతటా వ్యూహాత్మక డెలివరీ",
+                platform3_btn: "ఫ్లిప్‌కార్ట్‌లో లాంచ్ చేయండి",
+                footer1_title: "మిషన్ కంట్రోల్",
+                footer1_desc: "ఈ పుస్తకం నాయకత్వం మరియు రాజకీయ పరివర్తన యొక్క స్వతంత్ర విశ్లేషణను సూచిస్తుంది. ఇది ప్రజాదరణ మరియు మానవత్వానికి ప్రామాణిక సేవ మధ్య తేడాను అర్థం చేసుకోవాలని అనుకునే వారికి దీపస్తంభంగా నిలుస్తుంది.",
+                footer2_title: "వ్యూహాత్మక కమ్యూనికేషన్",
+                footer2_desc: "🌐 నాయకత్వ సలహాల కోసం కనెక్ట్ అవ్వండి",
+                footer3_title: "చట్టపరమైన ఫ్రేమ్‌వర్క్",
+                footer3_copyright: "© 2025 దినేష్ - నాయకత్వ వాస్తుశిల్పి",
+                footer3_rights: "అన్ని మేధో సంపత్తి హక్కులు రిజర్వ్ చేయబడ్డాయి",
+                footer3_analysis: "స్వతంత్ర రాజకీయ విశ్లేషణ & వ్యాఖ్యానం",
+                footer_powered: "⚡ ప్రామాణిక నాయకత్వ సూత్రాలచే శక్తివంతం ⚡"
+            }
+        };
+
+        // Current language
+        let currentLang = 'en';
+
+        // Function to translate the page
+        function translatePage(lang) {
+            const elements = document.querySelectorAll('[data-translate]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            
+            // Update document language attribute
+            document.documentElement.lang = lang;
+            
+            // Update page title based on language
+            const titleMap = {
+                'en': 'Thalapathy Alla Thalaivan - Leadership Revolution',
+                'ta': 'தளபதி அல்ல தலைவன் - தலைமைத்துவ புரட்சி',
+                'hi': 'थलपति अल्ला थलेवन - नेतृत्व क्रांति',
+                'te': 'తలపతి అల్లా తలైవన్ - నాయకత్వ విప్లవం'
+            };
+            document.title = titleMap[lang] || titleMap['en'];
+        }
+
+        // Language switcher functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const langButtons = document.querySelectorAll('.lang-btn');
+            
+            langButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const selectedLang = this.getAttribute('data-lang');
+                    
+                    // Update active state
+                    langButtons.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Translate page
+                    currentLang = selectedLang;
+                    translatePage(selectedLang);
+                    
+                    // Store preference in localStorage if available
+                    try {
+                        localStorage.setItem('preferred-language', selectedLang);
+                    } catch (e) {
+                        // Handle localStorage not available
+                    }
+                });
+            });
+            
+            // Load saved language preference
+            try {
+                const savedLang = localStorage.getItem('preferred-language');
+                if (savedLang && translations[savedLang]) {
+                    currentLang = savedLang;
+                    const activeBtn = document.querySelector(`[data-lang="${savedLang}"]`);
+                    if (activeBtn) {
+                        langButtons.forEach(b => b.classList.remove('active'));
+                        activeBtn.classList.add('active');
+                        translatePage(savedLang);
+                    }
+                }
+            } catch (e) {
+                // Handle localStorage not available
+            }
+        });
+
         // Reveal animation on scroll - Fixed version
         function revealOnScroll() {
             const reveals = document.querySelectorAll('.reveal');
@@ -800,7 +1130,7 @@
             reveals.forEach(reveal => {
                 const windowHeight = window.innerHeight;
                 const elementTop = reveal.getBoundingClientRect().top;
-                const elementVisible = 100; // Reduced threshold
+                const elementVisible = 100;
                 
                 if (elementTop < windowHeight - elementVisible) {
                     reveal.classList.add('active');
@@ -908,7 +1238,7 @@
             window.addEventListener('resize', resize);
             
             const nodes = [];
-            const nodeCount = 30; // Reduced for better performance
+            const nodeCount = 30;
             
             // Create nodes
             for (let i = 0; i < nodeCount; i++) {
@@ -947,7 +1277,7 @@
                             const dy = node.y - otherNode.y;
                             const distance = Math.sqrt(dx * dx + dy * dy);
                             
-                            if (distance < 120) { // Reduced connection distance
+                            if (distance < 120) {
                                 ctx.beginPath();
                                 ctx.moveTo(node.x, node.y);
                                 ctx.lineTo(otherNode.x, otherNode.y);
@@ -1010,7 +1340,7 @@
         document.querySelectorAll('.btn-futuristic').forEach(btn => {
             btn.addEventListener('mouseenter', function() {
                 this.style.animation = 'none';
-                this.offsetHeight; // Trigger reflow
+                this.offsetHeight;
                 this.style.animation = 'glitch 0.3s ease';
             });
         });
